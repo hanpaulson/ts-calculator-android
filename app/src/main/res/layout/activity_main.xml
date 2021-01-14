@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -29,7 +29,7 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textSize="32dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,35 +42,11 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/softRed"
                 android:onClick="clearClick"
-                android:text="AC" />
+                android:text="AC"
+                android:textColor="@color/angryRed" />
 
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:onClick="negateNumber"
-                android:text="+/-" />
-
-            <Button
-                android:id="@+id/button12"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:onClick="buttonClick"
-                android:text="/" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:onClick="buttonClick"
-                android:text="*" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,9 +87,11 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/softOrange"
                 android:nestedScrollingEnabled="false"
                 android:onClick="buttonClick"
-                android:text="-" />
+                android:text="-"
+                android:textColor="@color/Orange" />
 
         </LinearLayout>
 
@@ -155,8 +133,10 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/softOrange"
                 android:onClick="buttonClick"
-                android:text="+" />
+                android:text="+"
+                android:textColor="@color/Orange" />
 
         </LinearLayout>
 
@@ -193,13 +173,16 @@
                 android:text="3" />
 
             <Button
-                android:id="@+id/button20"
+                android:id="@+id/button12"
                 android:layout_width="50dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:onClick="equalsClick"
-                android:text="=" />
+                android:backgroundTint="@color/softOrange"
+                android:onClick="buttonClick"
+                android:text="/"
+                android:textColor="@color/Orange" />
+
 
         </LinearLayout>
 
@@ -209,6 +192,7 @@
             android:orientation="horizontal"
             android:weightSum="4">
 
+
             <Button
                 android:id="@+id/zeroButton"
                 android:layout_width="50dp"
@@ -217,6 +201,7 @@
                 android:layout_weight="1"
                 android:onClick="numberClick"
                 android:text="0" />
+
             <Button
                 android:id="@+id/dotButton"
                 android:layout_width="50dp"
@@ -225,6 +210,30 @@
                 android:layout_weight="1"
                 android:onClick="dotClick"
                 android:text="." />
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="50dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/softOrange"
+                android:onClick="equalsClick"
+                android:text="="
+                android:textColor="@color/Orange" />
+
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="50dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/softOrange"
+                android:onClick="buttonClick"
+                android:text="*"
+                android:textColor="@color/Orange" />
+
 
         </LinearLayout>
     </LinearLayout>

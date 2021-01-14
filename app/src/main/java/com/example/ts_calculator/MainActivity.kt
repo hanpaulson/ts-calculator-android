@@ -14,35 +14,33 @@ class MainActivity : AppCompatActivity() {
         updateDisplay("")
     }
 
-    val operationList: MutableList<String> = arrayListOf()
-    val numberCache: MutableList<String> = arrayListOf()
+    private val operationList: MutableList<String> = arrayListOf()
+    private val numberCache: MutableList<String> = arrayListOf()
 
 
-    //I couldn't find mkString.. so I improvised
-    fun makeString(list: List<String>, joiner: String = ""): String {
-
+    private fun makeString(list: List<String>, joiner: String = ""): String {
         if (list.isEmpty()) return ""
         return list.reduce { r, s -> r + joiner + s }
     }
 
-    fun clearCache() {
+    private fun clearCache() {
         numberCache.clear()
         operationList.clear()
     }
 
-    fun updateDisplay(mainDisplayString: String) {
+    private fun updateDisplay(mainDisplayString: String) {
 
         val fullCalculationString = makeString(operationList, " ")
-        var fullCalculationTextView = findViewById(R.id.fullCalculationText) as TextView
+        var fullCalculationTextView = findViewById<TextView>(R.id.fullCalculationText)
         fullCalculationTextView.text = fullCalculationString
 
-        val mainTextView = findViewById(R.id.textView) as TextView
+        val mainTextView = findViewById<TextView>(R.id.textView)
         mainTextView.text = mainDisplayString
     }
 
     fun clearClick(view: View) {
         clearCache()
-        updateDisplay("");
+        updateDisplay("")
     }
 
     fun equalsClick(view: View) {
@@ -51,26 +49,15 @@ class MainActivity : AppCompatActivity() {
 
         val calculator = StringCalculator()
         val answer = calculator.calculate(operationList)
-        Log.v("hannah", "" + answer)
-        updateDisplay("=" + answer.toString())
+        updateDisplay("" + answer.toString())
         clearCache()
     }
 
-    fun negateNumber(view: View) {
-        if (numberCache.isNotEmpty()) {
-            if (numberCache.first().equals("-")) {
-                numberCache.removeAt(0)
-            } else numberCache.add(0, "-")
-        } else numberCache.add("-")
-
-        val numberString = makeString(numberCache)
-        updateDisplay(numberString)
-    }
 
     fun dotClick(view: View) {
         val button = view as Button
         numberCache.add(".")
-        val text = makeString(numberCache);
+        val text = makeString(numberCache)
         updateDisplay(text)
     }
 
@@ -83,15 +70,15 @@ class MainActivity : AppCompatActivity() {
         numberCache.clear()
         operationList.add(button.text.toString())
 
-        updateDisplay(button.text.toString())
+        updateDisplay("")
     }
 
     fun numberClick(view: View) {
         val button = view as Button
-        val numberString = button.text;
+        val numberString = button.text
 
         numberCache.add(numberString.toString())
-        val text = makeString(numberCache);
+        val text = makeString(numberCache)
         updateDisplay(text)
     }
 }
