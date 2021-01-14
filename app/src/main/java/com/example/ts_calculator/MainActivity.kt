@@ -2,174 +2,98 @@ package com.example.ts_calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-
-    var digit_on_screen = StringBuilder()
-    var operation: Char = ' '
-    var leftHandSide: Double = 0.0
-    var rightHandSide: Double = 0.0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        result_id.text = "0"
-
-        initializeButtons()
+        updateDisplay("")
     }
 
-    private fun initializeButtons() {
-        functionalButtons()
-        operationalButtons()
-        numericalButtons()
+    val operationList: MutableList<String> = arrayListOf()
+    val numberCache: MutableList<String> = arrayListOf()
+
+
+    //I couldn't find mkString.. so I improvised
+    fun makeString(list: List<String>, joiner: String = ""): String {
+
+        if (list.isEmpty()) return ""
+        return list.reduce { r, s -> r + joiner + s }
     }
 
-    private fun numericalButtons() {
-
-        one_btn.setOnClickListener {
-            appendToDigitOnScreen("1")
-        }
-
-        two_btn.setOnClickListener {
-            appendToDigitOnScreen("2")
-        }
-
-        three_btn.setOnClickListener {
-            appendToDigitOnScreen("3")
-        }
-
-        four_btn.setOnClickListener {
-            appendToDigitOnScreen("4")
-        }
-
-        five_btn.setOnClickListener {
-            appendToDigitOnScreen("5")
-        }
-
-        six_btn.setOnClickListener {
-            appendToDigitOnScreen("6")
-        }
-
-        seven_btn.setOnClickListener {
-            appendToDigitOnScreen("7")
-        }
-
-        eight_btn.setOnClickListener {
-            appendToDigitOnScreen("8")
-        }
-
-        nine_btn.setOnClickListener {
-            appendToDigitOnScreen("9")
-        }
-
-        zero_btn.setOnClickListener {
-            appendToDigitOnScreen("0")
-        }
-
-        dot_btn.setOnClickListener {
-            appendToDigitOnScreen(".")
-        }
+    fun clearCache() {
+        numberCache.clear()
+        operationList.clear()
     }
 
-    private fun appendToDigitOnScreen(digit: String) {
+    fun updateDisplay(mainDisplayString: String) {
 
-        // Add each digit to our string builder
-        digit_on_screen.append(digit)
+        val fullCalculationString = makeString(operationList, " ")
+        var fullCalculationTextView = findViewById(R.id.fullCalculationText) as TextView
+        fullCalculationTextView.text = fullCalculationString
 
-        // display it on the screen of our mobile app
-        result_id.text = digit_on_screen.toString()
+        val mainTextView = findViewById(R.id.textView) as TextView
+        mainTextView.text = mainDisplayString
     }
 
-    private fun operationalButtons() {
-
-        addition_btn.setOnClickListener {
-            selectOperation('A')
-        }
-
-        subtract_btn.setOnClickListener {
-            selectOperation('B')
-        }
-
-        divide_btn.setOnClickListener {
-            selectOperation('D')
-        }
-
-        multipy_btn.setOnClickListener {
-            selectOperation('M')
-        }
-
+    fun clearClick(view: View) {
+        clearCache()
+        updateDisplay("");
     }
 
-    private fun selectOperation(c: Char) {
+    fun equalsClick(view: View) {
+        operationList.add(makeString(numberCache))
+        numberCache.clear()
 
-        operation = c
-        leftHandSide = digit_on_screen.toString().toDouble()
-        digit_on_screen.clear()
-        result_id.text = "0"
+        val calculator = StringCalculator()
+        val answer = calculator.calculate(operationList)
+        Log.v("hannah", "" + answer)
+        updateDisplay("=" + answer.toString())
+        clearCache()
     }
 
-    private fun functionalButtons() {
+    fun negateNumber(view: View) {
+        if (numberCache.isNotEmpty()) {
+            if (numberCache.first().equals("-")) {
+                numberCache.removeAt(0)
+            } else numberCache.add(0, "-")
+        } else numberCache.add("-")
 
-        clear_everything_btn.setOnClickListener {
-            digit_on_screen.clear()
-        }
-
-        clear_btn.setOnClickListener {
-            clearDigit()
-        }
-
-        backspace_btn.setOnClickListener {
-            clearDigit()
-        }
-
-        equal_btn.setOnClickListener {
-            performMathOperation()
-        }
-
+        val numberString = makeString(numberCache)
+        updateDisplay(numberString)
     }
 
-    private fun performMathOperation() {
-
-        rightHandSide = digit_on_screen.toString().toDouble()
-        digit_on_screen.clear()
-
-        when (operation) {
-
-            'A' -> {
-                val sum = OperationsHelper.add(leftHandSide, rightHandSide)
-                result_id.text = sum.toString()
-                digit_on_screen.append(sum)
-            }
-            'S' -> {
-                val subtract = OperationsHelper.subtract(leftHandSide, rightHandSide)
-                result_id.text = subtract.toString()
-                digit_on_screen.append(subtract)
-            }
-            'M' -> {
-                val multiply = OperationsHelper.multiply(leftHandSide, rightHandSide)
-                result_id.text = multiply.toString()
-                digit_on_screen.append(multiply)
-            }
-            'D' -> {
-                val divide = OperationsHelper.divide(leftHandSide, rightHandSide)
-                result_id.text = divide.toString()
-                digit_on_screen.append(divide)
-            }
-
-        }
-
+    fun dotClick(view: View) {
+        val button = view as Button
+        numberCache.add(".")
+        val text = makeString(numberCache);
+        updateDisplay(text)
     }
 
-    private fun clearDigit() {
+    fun buttonClick(view: View) {
 
-        val length = digit_on_screen.length
+        val button = view as Button
 
-        digit_on_screen.deleteCharAt(length - 1)
-        result_id.text = digit_on_screen.toString()
+        if (numberCache.isEmpty()) return
+        operationList.add(makeString(numberCache))
+        numberCache.clear()
+        operationList.add(button.text.toString())
 
+        updateDisplay(button.text.toString())
     }
 
+    fun numberClick(view: View) {
+        val button = view as Button
+        val numberString = button.text;
+
+        numberCache.add(numberString.toString())
+        val text = makeString(numberCache);
+        updateDisplay(text)
+    }
 }
 
 

@@ -5,6 +5,9 @@
     <color name="White">#ffffff</color>
     <color name="Chicago">#605c58</color>
     <color name="Alto">#dbdbdb</color>
-    <color name="Orange">#dbdbdb</color>
+    <color name="Orange">#F2653B</color>
+    <color name="softOrange">#F9D9C9</color>
+    <color name="softRed">#F8CEC3</color>
+    <color name="angryRed">#C74E3D</color>
 
 </resources>
