@@ -13,9 +13,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="0"
-        android:padding="8dp"
         android:background="#E7EBEE"
+        android:padding="8dp"
+        android:text="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +24,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/result_id"
         app:layout_constraintStart_toStartOf="@id/result_id"
         app:layout_constraintTop_toBottomOf="@id/result_id">
@@ -43,7 +43,8 @@
                 android:layout_width="50dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
+                android:layout_weight="12"
+                android:backgroundTint="@color/MineShaft"
                 android:text="CE" />
 
             <Button
@@ -52,6 +53,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/MineShaft"
                 android:text="C" />
 
             <ImageButton
@@ -59,7 +61,8 @@
                 android:layout_width="50dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:backgroundTint="@color/MineShaft" />
 
             <Button
                 android:id="@+id/divide_btn"
@@ -67,6 +70,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/MineShaft"
                 android:text="/" />
 
         </LinearLayout>
@@ -83,8 +87,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="9" />
+                android:text="7" />
 
             <Button
                 android:id="@+id/eight_btn"
@@ -92,7 +95,6 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="8" />
 
             <Button
@@ -101,8 +103,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="7"/>
+                android:text="9" />
 
             <Button
                 android:id="@+id/multipy_btn"
@@ -110,7 +111,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:backgroundTint="@color/MineShaft"
                 android:text="X" />
 
         </LinearLayout>
@@ -127,9 +128,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
-                android:text="6" />
+                android:text="4" />
 
             <Button
                 android:id="@+id/five_btn"
@@ -137,8 +136,6 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
                 android:text="5" />
 
             <Button
@@ -147,8 +144,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="4" />
+                android:text="6" />
 
             <Button
                 android:id="@+id/addition_btn"
@@ -156,7 +152,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:backgroundTint="@color/MineShaft"
                 android:text="+" />
 
         </LinearLayout>
@@ -173,8 +169,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="3" />
+                android:text="1" />
 
             <Button
                 android:id="@+id/two_btn"
@@ -182,7 +177,6 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="2" />
 
             <Button
@@ -191,8 +185,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="1"/>
+                android:text="3" />
 
             <Button
                 android:id="@+id/subtract_btn"
@@ -200,7 +193,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:backgroundTint="@color/MineShaft"
                 android:text="-" />
 
         </LinearLayout>
@@ -212,13 +205,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/percent_btn"
+                android:id="@+id/dot_btn"
                 android:layout_width="50dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="%" />
+                android:text="."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <Button
                 android:id="@+id/zero_btn"
@@ -226,17 +219,18 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="0" />
+                android:text="0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <Button
-                android:id="@+id/dot_btn"
+                android:id="@+id/percent_btn"
                 android:layout_width="50dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="." />
+                android:backgroundTint="@color/MineShaft"
+                android:text="%"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <Button
                 android:id="@+id/equal_btn"
@@ -244,8 +238,9 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="=" />
+                android:backgroundTint="@color/MineShaft"
+                android:text="="
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
 
